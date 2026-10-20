@@ -240,6 +240,97 @@ public class Ejercicio3_4 {
     }
 
     /*
+ * Ejercicio 8: Escribe un programa en Java que implemente una calculadora
+ * simple utilizando funciones para cada operación matemática y comprobación.
+ */
+public static void ejercicio8_1() {
+    System.out.println("Ejercicio 8");
+    int opcion = rand.nextInt(6) + 1;
+    
+    mostrarMenu();
+    System.out.println("Elige una opción (1-6): " + opcion);
+
+    if (opcion >= 1 && opcion <= 4) {
+        int num1 = rand.nextInt(20) + 1;
+        int num2 = rand.nextInt(10) + 1;
+        System.out.println("Introduce el primer número: " + num1);
+        System.out.println("Introduce el segundo número: " + num2);
+        
+        switch (opcion) {
+            case 1:
+                System.out.println("Resultado: " + sumar(num1, num2));
+                break;
+            case 2:
+                System.out.println("Resultado: " + restar(num1, num2));
+                break;
+            case 3:
+                System.out.println("Resultado: " + multiplicar(num1, num2));
+                break;
+            case 4:
+                if (num2 != 0) {
+                    System.out.println("Resultado: " + dividir(num1, num2));
+                } else {
+                    System.out.println("Error: División por cero no permitida.");
+                }
+                break;
+        }
+    } else if (opcion == 5) {
+        int num = rand.nextInt(30) + 1;
+        System.out.println("Introduce un número: " + num);
+        
+        if (esPrimo(num)) {
+            System.out.println(num + " es un número primo.");
+        } else {
+            System.out.println(num + " no es un número primo.");
+        }
+    } else if (opcion == 6) {
+        System.out.println("Saliendo de la calculadora...");
+    } else {
+        System.out.println("Opción no válida. Por favor, elige una opción del menú.");
+    }
+}
+
+// --- FUNCIONES AUXILIARES ---
+
+public static void mostrarMenu() {
+    System.out.println("Menú de la calculadora:");
+    System.out.println("1. Sumar");
+    System.out.println("2. Restar");
+    System.out.println("3. Multiplicar");
+    System.out.println("4. Dividir");
+    System.out.println("5. Es primo");
+    System.out.println("6. Salir");
+}
+
+public static int sumar(int a, int b) {
+    return a + b;
+}
+
+public static int restar(int a, int b) {
+    return a - b;
+}
+
+public static int multiplicar(int a, int b) {
+    return a * b;
+}
+
+public static double dividir(int a, int b) {
+    return (double) a / b;
+}
+
+public static boolean esPrimo(int num) {
+    if (num <= 1) {
+        return false;
+    }
+    for (int i = 2; i <= Math.sqrt(num); i++) {
+        if (num % i == 0) {
+            return false;
+        }
+    }
+    return true;
+}
+
+    /*
      * Ejercicio 9: Diseña un programa que calcule la letra de un DNI. Para ello:
      * 1º Pediremos el DNI por teclado al usuario.
      * 2º Para calcular la letra, cogeremos el DNI y lo dividiremos entre 23
@@ -386,6 +477,7 @@ public class Ejercicio3_4 {
         // ejercicio6();
         // ejercicio7();
         // ejercicio8();
+        // ejercicio8_1();
         // ejercicio9();
         // ejercicio10();
         // ejercicio11();
