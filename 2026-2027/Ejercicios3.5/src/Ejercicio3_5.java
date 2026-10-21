@@ -8,9 +8,8 @@ public class Ejercicio3_5 {
 
     // Todos con random
     /*
-     * Ejercicio 1: Diseña un programa que pide al usuario que ingrese la cantidad
-     * de números que va a
-     * introducir.
+     * Ejercicio 1: Diseña un programa que pides al usuario que ingrese la cantidad
+     * de números que va aintroducir.
      * Deberá leer la cantidad de números indicada y cuenta cuántos son positivos,
      * negativos
      * y ceros, cuantos pares y cuantos impares,
@@ -18,7 +17,35 @@ public class Ejercicio3_5 {
      */
     public static void ejercicio1() {
         System.out.println("Ejercicio 1");
+        System.out.print("¿Cuántos números vas a introducir? ");
+        int cantidad = sc.nextInt();
 
+        int positivos = 0;
+        int negativos = 0;
+        int ceros = 0;
+        int pares = 0;
+        int impares = 0;
+
+        for (int i = 1; i <= cantidad; i++) {
+            System.out.print("Introduce el número " + i + ": ");
+            int numero = sc.nextInt();
+
+            if (numero > 0) {
+                positivos++;
+            } else if (numero < 0) {
+                negativos++;
+            } else {
+                ceros++;
+            }
+
+            if (numero % 2 == 0) {
+                pares++;
+            } else {
+                impares++;
+            }
+        }
+
+        System.out.println("Positivos: " + positivos + "\n" + "Negativos: " + negativos + "\n" + "Ceros: " + ceros + "\n" + "Pares: " + pares + "\n" +  "Impares: " + impares);
     }
 
     /*
@@ -29,7 +56,12 @@ public class Ejercicio3_5 {
 
     public static void ejercicio2() {
         System.out.println("Ejercicio 2");
+        System.out.print("Introduce un número: ");
+        int numero = sc.nextInt();
 
+        for (int i = 1; i <= 10; i++) {
+            System.out.println(numero + " x " + i + " = " + (numero * i));
+        }
     }
     /*
      * Ejercicio 3: Diseña un programa que permita al usuario convertir temperaturas
@@ -41,6 +73,24 @@ public class Ejercicio3_5 {
 
     public static void ejercicio3() {
         System.out.println("Ejercicio 3");
+        System.out.println("1. Celsius a Fahrenheit");
+        System.out.println("2. Fahrenheit a Celsius");
+        System.out.print("Elige una conversión: ");
+        int opcion = sc.nextInt();
+
+        if (opcion == 1) {
+            System.out.print("Introduce los grados Celsius: ");
+            double celsius = sc.nextDouble();
+            double fahrenheit = celsius * 1.8 + 32;
+            System.out.println(celsius + " °C = " + fahrenheit + " °F");
+        } else if (opcion == 2) {
+            System.out.print("Introduce los grados Fahrenheit: ");
+            double fahrenheit = sc.nextDouble();
+            double celsius = (fahrenheit - 32) / 1.8;
+            System.out.println(fahrenheit + " °F = " + celsius + " °C");
+        } else {
+            System.out.println("Opción no válida.");
+        }
 
     }
 
@@ -56,6 +106,23 @@ public class Ejercicio3_5 {
 
     public static void ejercicio4() {
         System.out.println("Ejercicio 4");
+        System.out.print("Introduce un número entero: ");
+        int numero = sc.nextInt();
+
+        int sumaDivisores = 0;
+        if (numero > 1) {
+            for (int divisor = 1; divisor <= numero / 2; divisor++) {
+                if (numero % divisor == 0) {
+                    sumaDivisores += divisor;
+                }
+            }
+        }
+
+        if (numero > 1 && sumaDivisores == numero) {
+            System.out.println(numero + " es un número perfecto.");
+        } else {
+            System.out.println(numero + " no es un número perfecto.");
+        }
 
     }
 
