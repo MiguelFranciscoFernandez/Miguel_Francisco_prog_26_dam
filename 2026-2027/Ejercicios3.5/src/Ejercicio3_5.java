@@ -18,7 +18,7 @@ public class Ejercicio3_5 {
     public static void ejercicio1() {
         System.out.println("Ejercicio 1");
         System.out.print("¿Cuántos números vas a introducir? ");
-        int cantidad = sc.nextInt();
+        int cantidad = rand.nextInt(100) + 1;
 
         int positivos = 0;
         int negativos = 0;
@@ -28,7 +28,7 @@ public class Ejercicio3_5 {
 
         for (int i = 1; i <= cantidad; i++) {
             System.out.print("Introduce el número " + i + ": ");
-            int numero = sc.nextInt();
+            int numero = rand.nextInt(100) + 1;
 
             if (numero > 0) {
                 positivos++;
@@ -46,6 +46,7 @@ public class Ejercicio3_5 {
         }
 
         System.out.println("Positivos: " + positivos + "\n" + "Negativos: " + negativos + "\n" + "Ceros: " + ceros + "\n" + "Pares: " + pares + "\n" +  "Impares: " + impares);
+        System.out.println();
     }
 
     /*
@@ -57,41 +58,36 @@ public class Ejercicio3_5 {
     public static void ejercicio2() {
         System.out.println("Ejercicio 2");
         System.out.print("Introduce un número: ");
-        int numero = sc.nextInt();
+        int numero = rand.nextInt(100) + 1;
 
         for (int i = 1; i <= 10; i++) {
             System.out.println(numero + " x " + i + " = " + (numero * i));
         }
+        System.out.println();
     }
     /*
      * Ejercicio 3: Diseña un programa que permita al usuario convertir temperaturas
-     * de Celsius a
-     * Fahrenheit y viceversa. Ofrece un menú para elegir la conversión.
+     * de Celsius a Fahrenheit y viceversa. Ofrece un menú para elegir la conversión.
      * Para pasar de Celsius a Fahrenheit:
      * (°C * 1,8) + 32 y de Fahrenheit a Celsius: (ºF-32)/1.8)
      */
 
     public static void ejercicio3() {
         System.out.println("Ejercicio 3");
-        System.out.println("1. Celsius a Fahrenheit");
-        System.out.println("2. Fahrenheit a Celsius");
-        System.out.print("Elige una conversión: ");
-        int opcion = sc.nextInt();
-
-        if (opcion == 1) {
-            System.out.print("Introduce los grados Celsius: ");
-            double celsius = sc.nextDouble();
+        boolean conversion = rand.nextBoolean();
+    
+        if (conversion) {
+            double celsius = rand.nextDouble();
             double fahrenheit = celsius * 1.8 + 32;
+            System.out.println("Conversión de Celsius a Fahrenheit:");
             System.out.println(celsius + " °C = " + fahrenheit + " °F");
-        } else if (opcion == 2) {
-            System.out.print("Introduce los grados Fahrenheit: ");
-            double fahrenheit = sc.nextDouble();
-            double celsius = (fahrenheit - 32) / 1.8;
-            System.out.println(fahrenheit + " °F = " + celsius + " °C");
         } else {
-            System.out.println("Opción no válida.");
+            double fahrenheit = rand.nextDouble();
+            double celsius = (fahrenheit - 32) / 1.8;
+            System.out.println("Conversión de Fahrenheit a Celsius:");
+            System.out.println(fahrenheit + " °F = " + celsius + " °C");
         }
-
+        System.out.println();
     }
 
     /*
@@ -107,7 +103,7 @@ public class Ejercicio3_5 {
     public static void ejercicio4() {
         System.out.println("Ejercicio 4");
         System.out.print("Introduce un número entero: ");
-        int numero = sc.nextInt();
+        int numero = rand.nextInt(100) + 1;
 
         int sumaDivisores = 0;
         if (numero > 1) {
@@ -123,7 +119,7 @@ public class Ejercicio3_5 {
         } else {
             System.out.println(numero + " no es un número perfecto.");
         }
-
+        System.out.println();
     }
 
     /*
@@ -134,6 +130,23 @@ public class Ejercicio3_5 {
 
     public static void ejercicio5() {
         System.out.println("Ejercicio 5");
+        int entero = rand.nextInt(100) + 1;
+        System.out.println("Número entero: " + entero);
+        int sumaPrimos = 0;
+        for (int i = 2; i <= entero; i++) {
+            boolean esPrimo = true;
+            for (int j = 2; j <= Math.sqrt(i); j++) {
+                if (i % j == 0) {
+                    esPrimo = false;
+                    break;
+                }
+            }
+            if (esPrimo) {
+                sumaPrimos += i;
+            }
+        }
+        System.out.println("La suma de todos los números primos hasta " + entero + " es: " + sumaPrimos);
+        System.out.println();
     }
 
     /*
@@ -199,7 +212,7 @@ public class Ejercicio3_5 {
     public static void main(String[] args) {
         // ejercicio1();
         // ejercicio2();
-        // ejercicio3();
+        ejercicio3();
         // ejercicio4();
         // ejercicio5();
         // ejercicio6();
