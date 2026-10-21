@@ -102,7 +102,7 @@ public class Ejercicio3_5 {
 
     public static void ejercicio4() {
         System.out.println("Ejercicio 4");
-        System.out.print("Introduce un número entero: ");
+        System.out.print("Número entero: ");
         int numero = rand.nextInt(100) + 1;
 
         int sumaDivisores = 0;
@@ -138,7 +138,6 @@ public class Ejercicio3_5 {
             for (int j = 2; j <= Math.sqrt(i); j++) {
                 if (i % j == 0) {
                     esPrimo = false;
-                    break;
                 }
             }
             if (esPrimo) {
@@ -151,9 +150,7 @@ public class Ejercicio3_5 {
 
     /*
      * Ejercicio 6: Diseña un programa que simule una casa de apuestas. Se comenzará
-     * con un saldo
-     * de
-     * 100€. Pedirá al usuario que cantidad quiere apostar, la cual deberá estar
+     * con un saldo de 100€. Pedirá al usuario que cantidad quiere apostar, la cual deberá estar
      * entre 1 y el saldo disponible.
      * Se deberá generar un booleano aleatorio (random.nextBoolean()),
      * en caso de que salga true, el usuario gana el importe apostado.
@@ -163,6 +160,37 @@ public class Ejercicio3_5 {
 
     public static void ejercicio6() {
         System.out.println("Ejercicio 6");
+        int saldo = 100;
+        boolean seguir = true;
+
+        while (saldo > 0 && seguir) {
+            System.out.println("Saldo disponible: " + saldo + "€");
+            System.out.print("¿Cuánto quieres apostar? ");
+            int apuesta = sc.nextInt();
+
+            while (apuesta < 1 || apuesta > saldo) {
+                System.out.print("La apuesta debe estar entre 1 y " + saldo + "€. Inténtalo de nuevo: ");
+                apuesta = sc.nextInt();
+            }
+
+            if (rand.nextBoolean()) {
+                saldo += apuesta;
+                System.out.println("¡Has ganado! Saldo actual: " + saldo + "€");
+            } else {
+                saldo -= apuesta;
+                System.out.println("Has perdido. Saldo actual: " + saldo + "€");
+            }
+
+            if (saldo > 0) {
+                System.out.print("¿Quieres seguir jugando? (s/n): ");
+                seguir = sc.next().equalsIgnoreCase("s");
+            }
+        }
+
+        if (saldo == 0) {
+            System.out.println("Te has quedado sin saldo.");
+        }
+        System.out.println();
     }
 
     /*
@@ -182,7 +210,7 @@ public class Ejercicio3_5 {
 
     public static void ejercicio7() {
         System.out.println("Ejercicio 7");
-
+        System.out.println();
     }
 
     /*
@@ -206,13 +234,13 @@ public class Ejercicio3_5 {
 
     public static void ejercicio8() {
         System.out.println("Ejercicio 8");
-
+        System.out.println();
     }
 
     public static void main(String[] args) {
         // ejercicio1();
         // ejercicio2();
-        ejercicio3();
+        // ejercicio3();
         // ejercicio4();
         // ejercicio5();
         // ejercicio6();
