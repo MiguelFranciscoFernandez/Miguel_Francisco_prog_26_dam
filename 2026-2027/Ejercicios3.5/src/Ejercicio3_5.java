@@ -45,7 +45,8 @@ public class Ejercicio3_5 {
             }
         }
 
-        System.out.println("Positivos: " + positivos + "\n" + "Negativos: " + negativos + "\n" + "Ceros: " + ceros + "\n" + "Pares: " + pares + "\n" +  "Impares: " + impares);
+        System.out.println("Positivos: " + positivos + "\n" + "Negativos: " + negativos + "\n" + "Ceros: " + ceros
+                + "\n" + "Pares: " + pares + "\n" + "Impares: " + impares);
         System.out.println();
     }
 
@@ -67,7 +68,8 @@ public class Ejercicio3_5 {
     }
     /*
      * Ejercicio 3: Diseña un programa que permita al usuario convertir temperaturas
-     * de Celsius a Fahrenheit y viceversa. Ofrece un menú para elegir la conversión.
+     * de Celsius a Fahrenheit y viceversa. Ofrece un menú para elegir la
+     * conversión.
      * Para pasar de Celsius a Fahrenheit:
      * (°C * 1,8) + 32 y de Fahrenheit a Celsius: (ºF-32)/1.8)
      */
@@ -75,7 +77,7 @@ public class Ejercicio3_5 {
     public static void ejercicio3() {
         System.out.println("Ejercicio 3");
         boolean conversion = rand.nextBoolean();
-    
+
         if (conversion) {
             double celsius = rand.nextDouble();
             double fahrenheit = celsius * 1.8 + 32;
@@ -150,7 +152,8 @@ public class Ejercicio3_5 {
 
     /*
      * Ejercicio 6: Diseña un programa que simule una casa de apuestas. Se comenzará
-     * con un saldo de 100€. Pedirá al usuario que cantidad quiere apostar, la cual deberá estar
+     * con un saldo de 100€. Pedirá al usuario que cantidad quiere apostar, la cual
+     * deberá estar
      * entre 1 y el saldo disponible.
      * Se deberá generar un booleano aleatorio (random.nextBoolean()),
      * en caso de que salga true, el usuario gana el importe apostado.
@@ -210,6 +213,32 @@ public class Ejercicio3_5 {
 
     public static void ejercicio7() {
         System.out.println("Ejercicio 7");
+        String[] pronosticos = new String[15];
+        String[] resultados = { "1", "X", "2" };
+
+        for (int i = 0; i < pronosticos.length; i++) {
+            System.out.print("Introduce tu pronóstico para el partido " + (i + 1) + " (1, X o 2): ");
+            pronosticos[i] = sc.next().toUpperCase();
+
+            while (!pronosticos[i].equals("1") && !pronosticos[i].equals("X") && !pronosticos[i].equals("2")) {
+                System.out.print("Entrada no válida. Introduce 1, X o 2: ");
+                pronosticos[i] = sc.next().toUpperCase();
+            }
+        }
+
+        int aciertos = 0;
+        for (int i = 0; i < resultados.length; i++) {
+            String resultado = resultados[rand.nextInt(resultados.length)];
+            System.out.println("Partido " + (i + 1) + ": resultado " + resultado
+                    + ", tu pronóstico " + pronosticos[i]);
+
+            if (resultado.equals(pronosticos[i])) {
+                aciertos++;
+            }
+        }
+
+        System.out.println("Aciertos del 1 al 14: " + Math.min(aciertos, 14));
+        System.out.println("Pleno al 15: " + (aciertos == 15 ? "¡Acertado!" : "No acertado"));
         System.out.println();
     }
 
@@ -233,8 +262,21 @@ public class Ejercicio3_5 {
      */
 
     public static void ejercicio8() {
-        System.out.println("Ejercicio 8");
-        System.out.println();
+        String frase = Math.random() < 0.5 ? "hola como estas" : "programando en java";
+        StringBuilder camelCase = new StringBuilder();
+        boolean mayuscula = true;
+
+        for (int i = 0; i < frase.length(); i++) {
+            char c = frase.charAt(i);
+            if (c == ' ') {
+                mayuscula = true;
+            } else {
+                camelCase.append(mayuscula ? Character.toUpperCase(c) : Character.toLowerCase(c));
+                mayuscula = false;
+            }
+        }
+
+        System.out.println(frase + " -> " + camelCase);
     }
 
     public static void main(String[] args) {
@@ -246,7 +288,6 @@ public class Ejercicio3_5 {
         // ejercicio6();
         // ejercicio7();
         // ejercicio8();
-
 
     }
 }

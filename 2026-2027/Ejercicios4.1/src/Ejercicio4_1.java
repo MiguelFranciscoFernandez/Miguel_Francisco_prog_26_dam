@@ -13,6 +13,13 @@ public class Ejercicio4_1 {
      */
     public static void ejercicio1() {
         System.out.println("Ejercicio 1");
+        int a = rand.nextInt(100);
+        int b = rand.nextInt(100);
+        int resultado = suma(a, b);
+        System.out.println("La suma de " + a + " y " + b + " es: " + resultado);
+    }
+    public static int suma(int a, int b) {
+        return a + b;
     }
 
     /*
@@ -21,6 +28,10 @@ public class Ejercicio4_1 {
      */
     public static void ejercicio2() {
         System.out.println("Ejercicio 2");
+        holaMundo();
+    }
+    public static void holaMundo() {
+        System.out.println("Hola Mundo!");
     }
 
     /*
@@ -30,6 +41,12 @@ public class Ejercicio4_1 {
      */
     public static void ejercicio3() {
         System.out.println("Ejercicio 3");
+        eco(rand.nextInt(10) + 1);
+    }
+    public static void eco(int n) {
+        for (int i = 0; i < n; i++) {
+            System.out.println("ECO");
+        }
     }
 
     /*
@@ -39,6 +56,19 @@ public class Ejercicio4_1 {
      */
     public static void ejercicio4() {
         System.out.println("Ejercicio 4");
+        int a = rand.nextInt(100);
+        int b = rand.nextInt(100);
+        System.out.println("Números pares entre " + a + " y " + b + ":");
+        mostrarIntermedios(a, b);
+    }
+    public static void mostrarIntermedios(int a, int b) {
+        int min = Math.min(a, b);
+        int max = Math.max(a, b);
+        for (int i = min; i <= max; i++) {
+            if (i % 2 == 0) {
+                System.out.println(i);
+            }
+        }
     }
 
     /*
@@ -307,7 +337,6 @@ public class Ejercicio4_1 {
     }
 
     public static void main(String[] args) {
-        // Descomenta el ejercicio que quieras probar:
         // ejercicio1();
         // ejercicio2();
         // ejercicio3();
