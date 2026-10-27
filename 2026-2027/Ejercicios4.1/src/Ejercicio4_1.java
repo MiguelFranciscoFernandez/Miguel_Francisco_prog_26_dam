@@ -80,6 +80,12 @@ public class Ejercicio4_1 {
      */
     public static void ejercicio5() {
         System.out.println("Ejercicio 5");
+        double r = rand.nextInt(10) + 1;
+        double area = areaCirculo(r);
+        System.out.printf("El área de un círculo de radio %.2f es: %.2f%n", r, area);
+    }
+    public static double areaCirculo(double r) {
+        return Math.PI * r * r;
     }
 
     /*
@@ -88,6 +94,13 @@ public class Ejercicio4_1 {
      */
     public static void ejercicio6() {
         System.out.println("Ejercicio 6");
+        int a = rand.nextInt(100);
+        int b = rand.nextInt(100);
+        int mayor = mayorDeDos(a, b);
+        System.out.println("El mayor entre " + a + " y " + b + " es: " + mayor);
+    }
+    public static int mayorDeDos(int a, int b) {
+        return (a >= b) ? a : b;
     }
 
     /*
