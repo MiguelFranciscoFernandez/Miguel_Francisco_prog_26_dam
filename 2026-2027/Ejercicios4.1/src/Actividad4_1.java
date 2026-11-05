@@ -15,9 +15,24 @@ public class Actividad4_1{
      * 1) Pide al usuario un número natural n, luego solicita n números,
      * los guarda en un array y los muestra por pantalla.
      */
-    public static void ejercicio1() {
+   public static void ejercicio1() {
         System.out.println("Ejercicio 1");
 
+        System.out.print("Introduce un número natural n: ");
+        int n = sc.nextInt();
+
+        int[] numeros = new int[n];
+
+        for (int i = 0; i < n; i++) {
+            System.out.print("Introduce el número " + (i + 1) + ": ");
+            numeros[i] = sc.nextInt();
+        }
+
+        System.out.print("Array introducido: [");
+        for (int i = 0; i < numeros.length; i++) {
+            System.out.print(numeros[i] + (i < numeros.length - 1 ? ", " : ""));
+        }
+        System.out.println("]");
     }
 
     /*
@@ -27,6 +42,27 @@ public class Actividad4_1{
     public static void ejercicio2() {
         System.out.println("Ejercicio 2");
 
+        int[] a = {4, 8, 15, 16, 23, 42};
+        int[] b = new int[a.length];
+
+        // Copia manual elemento a elemento
+        for (int i = 0; i < a.length; i++) {
+            b[i] = a[i];
+        }
+
+        // Mostrar array a
+        System.out.print("Array a: [");
+        for (int i = 0; i < a.length; i++) {
+            System.out.print(a[i] + (i < a.length - 1 ? ", " : ""));
+        }
+        System.out.println("]");
+
+        // Mostrar array b
+        System.out.print("Array b (copia): [");
+        for (int i = 0; i < b.length; i++) {
+            System.out.print(b[i] + (i < b.length - 1 ? ", " : ""));
+        }
+        System.out.println("]");
     }
 
     /*
@@ -36,21 +72,109 @@ public class Actividad4_1{
     public static void ejercicio3() {
         System.out.println("Ejercicio 3");
 
+        // Usamos un array temporal de tamaño máximo razonable (ej. 100)
+        int[] temp = new int[100];
+        int contador = 0;
+
+        System.out.println("Introduce números enteros positivos (-1 para terminar):");
+        while (true) {
+            int valor = sc.nextInt();
+            if (valor == -1) {
+                break;
+            }
+            if (contador < temp.length) {
+                temp[contador] = valor;
+                contador++;
+            } else {
+                System.out.println("Límite de almacenamiento alcanzado.");
+                break;
+            }
         }
+
+        // Creamos el array definitivo con el tamaño exacto de los elementos introducidos
+        int[] numeros = new int[contador];
+        for (int i = 0; i < contador; i++) {
+            numeros[i] = temp[i];
+        }
+
+        // Mostrar resultado
+        System.out.print("Números guardados: [");
+        for (int i = 0; i < numeros.length; i++) {
+            System.out.print(numeros[i] + (i < numeros.length - 1 ? ", " : ""));
+        }
+        System.out.println("]");
+    }
 
     /*
      * 4) Pide al usuario un array de 10 elementos y crea otro array con los
      * mismos elementos en orden inverso.
      */
     public static void ejercicio4() {
-        
+        System.out.println("Ejercicio 4");
+
+        int[] original = new int[10];
+        int[] inverso = new int[10];
+
+        System.out.println("Introduce 10 elementos:");
+        for (int i = 0; i < 10; i++) {
+            System.out.print("Elemento " + (i + 1) + ": ");
+            original[i] = sc.nextInt();
+        }
+
+        // Invertir orden
+        for (int i = 0; i < 10; i++) {
+            inverso[i] = original[9 - i];
+        }
+
+        // Mostrar array original e inverso
+        System.out.print("Original: [");
+        for (int i = 0; i < 10; i++) {
+            System.out.print(original[i] + (i < 9 ? ", " : ""));
+        }
+        System.out.println("]");
+
+        System.out.print("Inverso:  [");
+        for (int i = 0; i < 10; i++) {
+            System.out.print(inverso[i] + (i < 9 ? ", " : ""));
+        }
+        System.out.println("]");
     }
 
     /*
      * 5) Pide al usuario 8 números y crea un array b con los elementos impares.
      */
     public static void ejercicio5() {
-        
+        System.out.println("Ejercicio 5");
+
+
+        int[] a = new int[8];
+        int contadorImpares = 0;
+
+        System.out.println("Introduce 8 números:");
+        for (int i = 0; i < 8; i++) {
+            System.out.print("Número " + (i + 1) + ": ");
+            a[i] = sc.nextInt();
+            if (a[i] % 2 != 0) {
+                contadorImpares++;
+            }
+        }
+
+        // Crear el array b con el tamaño exacto de números impares contados
+        int[] b = new int[contadorImpares];
+        int j = 0;
+        for (int i = 0; i < 8; i++) {
+            if (a[i] % 2 != 0) {
+                b[j] = a[i];
+                j++;
+            }
+        }
+
+        // Mostrar array b con los impares
+        System.out.print("Elementos impares (array b): [");
+        for (int i = 0; i < b.length; i++) {
+            System.out.print(b[i] + (i < b.length - 1 ? ", " : ""));
+        }
+        System.out.println("]");
     }
 
     /*
@@ -205,6 +329,7 @@ public class Actividad4_1{
         System.out.println("Ejercicio 17");
 
     }
+
 
     public static void main(String[] args) {
         // ejercicio1();
