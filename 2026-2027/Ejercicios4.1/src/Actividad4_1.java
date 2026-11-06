@@ -15,23 +15,22 @@ public class Actividad4_1{
      * 1) Genera un número natural n y luego n números aleatorios,
      * los guarda en un array y los muestra por pantalla.
      */
-   public static void ejercicio1() {
+    public static void ejercicio1() {
         System.out.println("Ejercicio 1");
 
         int n = rand.nextInt(10) + 1;
         System.out.println("Tamaño del array: " + n);
 
-        int[] numeros = new int[n];
-
+        int [] a = new int[n];
         for (int i = 0; i < n; i++) {
-            numeros[i] = rand.nextInt(100);
+            a[i] = rand.nextInt(100);
         }
-
         System.out.print("Array generado: [");
-        for (int i = 0; i < numeros.length; i++) {
-            System.out.print(numeros[i] + (i < numeros.length - 1 ? ", " : ""));
+        for (int i = 0; i < a.length; i++) {
+            System.out.print(a[i] + (i < a.length - 1 ? ", " : ""));
         }
         System.out.println("]");
+
     }
 
     /*
