@@ -95,13 +95,12 @@ public class Actividad4_1 {
     public static void ejercicio4() {
         System.out.println("Ejercicio 4");
         // Generar array de 10 elementos aleatorios (1-100)
-        
+
         int[] original = new int[10];
         for (int i = 0; i < original.length; i++) {
             original[i] = (int) (Math.random() * 100) + 1;
         }
 
-        // Crear array inverso recorriendo de ATRÁS hacia ADELANTE
         int[] inverso = new int[original.length];
         for (int i = original.length - 1; i >= 0; i--) {
             inverso[original.length - 1 - i] = original[i];
@@ -159,7 +158,23 @@ public class Actividad4_1 {
      */
     public static void ejercicio6() {
         System.out.println("Ejercicio 6");
+        int[] a = new int[9];
+        int pares = 0;
+        for (int i = 0; i < a.length; i++) {
+            System.out.print("Introduce un número natural: ");
+            a[i] = sc.nextInt();
+            if (a[i] % 2 == 0) pares++;
+        }
 
+        int[] b = new int[pares];
+        int[] c = new int[a.length - pares];
+        int j = 0, k = 0;
+        for (int n : a) {
+            if (n % 2 == 0) b[j++] = n;
+            else c[k++] = n;
+        }
+        System.out.println("Pares: " + java.util.Arrays.toString(b));
+        System.out.println("Impares: " + java.util.Arrays.toString(c));
     }
 
     /*
@@ -168,10 +183,53 @@ public class Actividad4_1 {
      * mínimo y las posiciones que ocupan en el array.
      */
 
-    public static void ejercicio7() {
-        System.out.println("Ejercicio 7");
+public static void ejercicio7() {
+    System.out.println("Ejercicio 7");
+    int[] a = new int[10];
+    Random rand = new Random();
 
+    // Rellenar el array con números aleatorios (entre 1 y 100)
+    for (int i = 0; i < a.length; i++) {
+        a[i] = rand.nextInt(100) + 1;
     }
+
+    // Mostrar los 10 números generados
+    System.out.print("Números generados: ");
+    for (int i = 0; i < a.length; i++) {
+        System.out.print(a[i] + " ");
+    }
+    System.out.println(); // Salto de línea
+
+    // Buscar máximo y mínimo
+    int max = Integer.MIN_VALUE;
+    int min = Integer.MAX_VALUE;
+    for (int i = 0; i < a.length; i++) {
+        if (a[i] > max) {
+            max = a[i];
+        }
+        if (a[i] < min) {
+            min = a[i];
+        }
+    }
+
+    // Mostrar posiciones del máximo
+    System.out.print("Máximo: " + max + " en posición(es): ");
+    for (int i = 0; i < a.length; i++) {
+        if (a[i] == max) {
+            System.out.print(i + " ");
+        }
+    }
+
+    // Mostrar posiciones del mínimo
+    System.out.print("\nMínimo: " + min + " en posición(es): ");
+    for (int i = 0; i < a.length; i++) {
+        if (a[i] == min) {
+            System.out.print(i + " ");
+        }
+    }
+    System.out.println();
+}
+
 
     /*
      * 8) Escribe un programa que genere 20 números enteros
@@ -302,13 +360,13 @@ public class Actividad4_1 {
     }
 
     public static void main(String[] args) {
-        ejercicio1();
-        ejercicio2();
-        ejercicio3();
-        ejercicio4();
-        ejercicio5();
+        // ejercicio1();
+        // ejercicio2();
+        // ejercicio3();
+        // ejercicio4();
+        // ejercicio5();
         // ejercicio6();
-        // ejercicio7();
+        ejercicio7();
         // ejercicio8();
         // ejercicio9();
         // ejercicio10();
