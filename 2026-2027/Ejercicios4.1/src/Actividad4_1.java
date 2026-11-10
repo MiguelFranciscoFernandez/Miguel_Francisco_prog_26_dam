@@ -1,7 +1,7 @@
 import java.util.Random;
 import java.util.Scanner;
 
-public class Actividad4_1{
+public class Actividad4_1 {
     // Declaramos un Scanner estático para leer datos desde teclado
     static Scanner sc = new Scanner(System.in);
     static Random rand = new Random();
@@ -21,7 +21,7 @@ public class Actividad4_1{
         int n = rand.nextInt(10) + 1;
         System.out.println("Tamaño del array: " + n);
 
-        int [] a = new int[n];
+        int[] a = new int[n];
         for (int i = 0; i < n; i++) {
             a[i] = rand.nextInt(100);
         }
@@ -94,31 +94,27 @@ public class Actividad4_1{
      */
     public static void ejercicio4() {
         System.out.println("Ejercicio 4");
-
+        // Generar array de 10 elementos aleatorios (1-100)
+        
         int[] original = new int[10];
-        int[] inverso = new int[10];
-
-        for (int i = 0; i < 10; i++) {
-            original[i] = rand.nextInt(100);
+        for (int i = 0; i < original.length; i++) {
+            original[i] = (int) (Math.random() * 100) + 1;
         }
 
-        // Invertir orden
-        for (int i = 0; i < 10; i++) {
-            inverso[i] = original[9 - i];
+        // Crear array inverso recorriendo de ATRÁS hacia ADELANTE
+        int[] inverso = new int[original.length];
+        for (int i = original.length - 1; i >= 0; i--) {
+            inverso[original.length - 1 - i] = original[i];
         }
 
-        // Mostrar array original e inverso
-        System.out.print("Original: [");
-        for (int i = 0; i < 10; i++) {
-            System.out.print(original[i] + (i < 9 ? ", " : ""));
-        }
-        System.out.println("]");
+        // Mostrar resultados
+        System.out.print("Original: ");
+        for (int n : original)
+            System.out.print(n + " ");
 
-        System.out.print("Inverso:  [");
-        for (int i = 0; i < 10; i++) {
-            System.out.print(inverso[i] + (i < 9 ? ", " : ""));
-        }
-        System.out.println("]");
+        System.out.print("\nInverso:  ");
+        for (int n : inverso)
+            System.out.print(n + " ");
     }
 
     /*
@@ -126,7 +122,6 @@ public class Actividad4_1{
      */
     public static void ejercicio5() {
         System.out.println("Ejercicio 5");
-
 
         int[] a = new int[8];
         int contadorImpares = 0;
@@ -137,7 +132,6 @@ public class Actividad4_1{
                 contadorImpares++;
             }
         }
-
 
         int[] b = new int[contadorImpares];
         int j = 0;
@@ -153,7 +147,7 @@ public class Actividad4_1{
         for (int i = 0; i < b.length; i++) {
             System.out.print(b[i] + (i < b.length - 1 ? ", " : ""));
         }
-        System.out.println ();
+        System.out.println();
     }
 
     /*
@@ -211,8 +205,6 @@ public class Actividad4_1{
      */
 
     // Función auxiliar para verificar si un número es primo
-
-
 
     /*
      * 11) Realiza un programa que dado un array bidimensional, lo
@@ -308,7 +300,6 @@ public class Actividad4_1{
         System.out.println("Ejercicio 17");
 
     }
-
 
     public static void main(String[] args) {
         ejercicio1();
