@@ -1,36 +1,42 @@
 public class Burbuja {
 
     public static void main(String[] args) {
-        int[] numeros = {64, 34, 25, 12, 22, 11, 90};
+        int[] lista = {64, 34, 25, 12, 22, 11, 90};
 
         System.out.println("Array original:");
-        imprimir(numeros);
+        imprimir(lista);
 
-        ordenarBurbuja(numeros);
+        ordenacionM(lista, 'c');
+        System.out.println("Orden creciente:");
+        imprimir(lista);
 
-        System.out.println("Array ordenado:");
-        imprimir(numeros);
+        ordenacionM(lista, 'd');
+        System.out.println("Orden decreciente:");
+        imprimir(lista);
     }
 
-    public static void ordenarBurbuja(int[] arr) {
-        int n = arr.length;
+    public static void ordenacionM(int[] lista, char modo) {
+        // Aceptar únicamente modos válidos.
+        // Esto no es totalmente necesario para el ejercicio.
+        if(modo != 'c' && modo != 'd') return;
 
-        for (int i = 0; i < n - 1; i++) {
-            boolean huboIntercambio = false;
+        // Recorrer la lista.
+        for(int i = 0; i < lista.length; i++) {
+            // Por cada pasada, recorrer la lista hasta el penúltimo
+            // elemento sin ordenar (el final ya está ordenado).
+            for(int j = 0; j < lista.length - 1 - i; j++) {
+                // Comprobar si el número actual está
+                // desordenado respecto al siguiente.
+                boolean desordenados;
+                if(modo == 'c') desordenados = lista[j] > lista[j + 1];
+                else desordenados = lista[j] < lista[j + 1];
 
-            for (int j = 0; j < n - 1 - i; j++) {
-                if (arr[j] > arr[j + 1]) {
-                    // Intercambiar los elementos
-                    int temp = arr[j];
-                    arr[j] = arr[j + 1];
-                    arr[j + 1] = temp;
-                    huboIntercambio = true;
+                // Si están desordenados, cambiarlos de sitio.
+                if(desordenados) {
+                    int aux = lista[j];
+                    lista[j] = lista[j + 1];
+                    lista[j + 1] = aux;
                 }
-            }
-
-            // Si no hubo intercambios, el array ya está ordenado
-            if (!huboIntercambio) {
-                break;
             }
         }
     }
