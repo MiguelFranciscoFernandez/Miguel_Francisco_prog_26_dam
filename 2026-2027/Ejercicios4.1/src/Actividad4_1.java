@@ -241,6 +241,35 @@ public static void ejercicio7() {
     public static void ejercicio8() {
         System.out.println("Ejercicio 8");
 
+        int[] numeros = new int[20];
+        int cantidadPares = 0;
+
+        for (int i = 0; i < numeros.length; i++) {
+            numeros[i] = rand.nextInt(100);
+            if (numeros[i] % 2 == 0) {
+                cantidadPares++;
+            }
+        }
+
+        int[] pares = new int[cantidadPares];
+        int j = 0;
+        for (int numero : numeros) {
+            if (numero % 2 == 0) {
+                pares[j++] = numero;
+            }
+        }
+
+        System.out.print("Array original: [");
+        for (int i = 0; i < numeros.length; i++) {
+            System.out.print(numeros[i] + (i < numeros.length - 1 ? ", " : ""));
+        }
+        System.out.println("]");
+
+        System.out.print("Números pares: [");
+        for (int i = 0; i < pares.length; i++) {
+            System.out.print(pares[i] + (i < pares.length - 1 ? ", " : ""));
+        }
+        System.out.println("]");
     }
 
     /*
@@ -252,6 +281,33 @@ public static void ejercicio7() {
     public static void ejercicio9() {
         System.out.println("Ejercicio 9");
 
+        int[] numeros = new int[10];
+        for (int i = 0; i < numeros.length; i++) {
+            numeros[i] = rand.nextInt(100);
+        }
+
+        System.out.print("Array desordenado: [");
+        for (int i = 0; i < numeros.length; i++) {
+            System.out.print(numeros[i] + (i < numeros.length - 1 ? ", " : ""));
+        }
+        System.out.println("]");
+
+        // Ordenar de menor a mayor mediante el método burbuja
+        for (int i = 0; i < numeros.length - 1; i++) {
+            for (int j = 0; j < numeros.length - 1 - i; j++) {
+                if (numeros[j] > numeros[j + 1]) {
+                    int temporal = numeros[j];
+                    numeros[j] = numeros[j + 1];
+                    numeros[j + 1] = temporal;
+                }
+            }
+        }
+
+        System.out.print("Array ordenado: [");
+        for (int i = 0; i < numeros.length; i++) {
+            System.out.print(numeros[i] + (i < numeros.length - 1 ? ", " : ""));
+        }
+        System.out.println("]");
     }
 
     /*
