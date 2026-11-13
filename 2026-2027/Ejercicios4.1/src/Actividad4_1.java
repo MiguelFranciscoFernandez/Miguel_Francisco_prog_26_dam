@@ -186,7 +186,6 @@ public class Actividad4_1 {
 public static void ejercicio7() {
     System.out.println("Ejercicio 7");
     int[] a = new int[10];
-    Random rand = new Random();
 
     // Rellenar el array con números aleatorios (entre 1 y 100)
     for (int i = 0; i < a.length; i++) {
@@ -201,8 +200,8 @@ public static void ejercicio7() {
     System.out.println(); // Salto de línea
 
     // Buscar máximo y mínimo
-    int max = Integer.MIN_VALUE;
-    int min = Integer.MAX_VALUE;
+    int max = Integer.MAX_VALUE;
+    int min = Integer.MIN_VALUE;
     for (int i = 0; i < a.length; i++) {
         if (a[i] > max) {
             max = a[i];
