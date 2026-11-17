@@ -163,15 +163,18 @@ public class Actividad4_1 {
         for (int i = 0; i < a.length; i++) {
             System.out.print("Introduce un número natural: ");
             a[i] = sc.nextInt();
-            if (a[i] % 2 == 0) pares++;
+            if (a[i] % 2 == 0)
+                pares++;
         }
 
         int[] b = new int[pares];
         int[] c = new int[a.length - pares];
         int j = 0, k = 0;
         for (int n : a) {
-            if (n % 2 == 0) b[j++] = n;
-            else c[k++] = n;
+            if (n % 2 == 0)
+                b[j++] = n;
+            else
+                c[k++] = n;
         }
         System.out.println("Pares: " + java.util.Arrays.toString(b));
         System.out.println("Impares: " + java.util.Arrays.toString(c));
@@ -183,53 +186,52 @@ public class Actividad4_1 {
      * mínimo y las posiciones que ocupan en el array.
      */
 
-public static void ejercicio7() {
-    System.out.println("Ejercicio 7");
-    int[] a = new int[10];
-    Random rand = new Random();
+    public static void ejercicio7() {
+        System.out.println("Ejercicio 7");
+        int[] a = new int[10];
+        Random rand = new Random();
 
-    // Rellenar el array con números aleatorios (entre 1 y 100)
-    for (int i = 0; i < a.length; i++) {
-        a[i] = rand.nextInt(100) + 1;
-    }
-
-    // Mostrar los 10 números generados
-    System.out.print("Números generados: ");
-    for (int i = 0; i < a.length; i++) {
-        System.out.print(a[i] + " ");
-    }
-    System.out.println(); // Salto de línea
-
-    // Buscar máximo y mínimo
-    int max = Integer.MIN_VALUE;
-    int min = Integer.MAX_VALUE;
-    for (int i = 0; i < a.length; i++) {
-        if (a[i] > max) {
-            max = a[i];
+        // Rellenar el array con números aleatorios (entre 1 y 100)
+        for (int i = 0; i < a.length; i++) {
+            a[i] = rand.nextInt(100) + 1;
         }
-        if (a[i] < min) {
-            min = a[i];
-        }
-    }
 
-    // Mostrar posiciones del máximo
-    System.out.print("Máximo: " + max + " en posición(es): ");
-    for (int i = 0; i < a.length; i++) {
-        if (a[i] == max) {
-            System.out.print(i + " ");
+        // Mostrar los 10 números generados
+        System.out.print("Números generados: ");
+        for (int i = 0; i < a.length; i++) {
+            System.out.print(a[i] + " ");
         }
-    }
+        System.out.println(); // Salto de línea
 
-    // Mostrar posiciones del mínimo
-    System.out.print("\nMínimo: " + min + " en posición(es): ");
-    for (int i = 0; i < a.length; i++) {
-        if (a[i] == min) {
-            System.out.print(i + " ");
+        // Buscar máximo y mínimo
+        int max = Integer.MIN_VALUE;
+        int min = Integer.MAX_VALUE;
+        for (int i = 0; i < a.length; i++) {
+            if (a[i] > max) {
+                max = a[i];
+            }
+            if (a[i] < min) {
+                min = a[i];
+            }
         }
-    }
-    System.out.println();
-}
 
+        // Mostrar posiciones del máximo
+        System.out.print("Máximo: " + max + " en posición(es): ");
+        for (int i = 0; i < a.length; i++) {
+            if (a[i] == max) {
+                System.out.print(i + " ");
+            }
+        }
+
+        // Mostrar posiciones del mínimo
+        System.out.print("\nMínimo: " + min + " en posición(es): ");
+        for (int i = 0; i < a.length; i++) {
+            if (a[i] == min) {
+                System.out.print(i + " ");
+            }
+        }
+        System.out.println();
+    }
 
     /*
      * 8) Escribe un programa que genere 20 números enteros
@@ -320,6 +322,50 @@ public static void ejercicio7() {
 
     // Función auxiliar para verificar si un número es primo
 
+    public static boolean esPrimo(int numero) {
+        if (numero <= 1)
+            return false;
+        for (int i = 2; i <= Math.sqrt(numero); i++) {
+            if (numero % i == 0)
+                return false;
+        }
+        return true;
+    }
+
+    public static void ejercicio10() {
+        System.out.println("Ejercicio 10");
+
+        int[] numeros = new int[20];
+        int cantidadPrimos = 0;
+
+        for (int i = 0; i < numeros.length; i++) {
+            numeros[i] = rand.nextInt(50) + 1;
+            if (esPrimo(numeros[i])) {
+                cantidadPrimos++;
+            }
+        }
+
+        int[] primos = new int[cantidadPrimos];
+        int j = 0;
+        for (int numero : numeros) {
+            if (esPrimo(numero)) {
+                primos[j++] = numero;
+            }
+        }
+
+        System.out.print("Array original: [");
+        for (int i = 0; i < numeros.length; i++) {
+            System.out.print(numeros[i] + (i < numeros.length - 1 ? ", " : ""));
+        }
+        System.out.println("]");
+
+        System.out.print("Números primos: [");
+        for (int i = 0; i < primos.length; i++) {
+            System.out.print(primos[i] + (i < primos.length - 1 ? ", " : ""));
+        }
+        System.out.println("]");
+    }
+
     /*
      * 11) Realiza un programa que dado un array bidimensional, lo
      * muestre por pantalla con la siguiente estructura:
@@ -327,6 +373,24 @@ public static void ejercicio7() {
     public static void ejercicio11() {
         System.out.println("Ejercicio 11");
 
+        int filas = rand.nextInt(3) + 2; // entre 2 y 4
+        int columnas = rand.nextInt(3) + 2; // entre 2 y 4
+        int[][] matriz = new int[filas][columnas];
+
+        for (int i = 0; i < filas; i++) {
+            for (int j = 0; j < columnas; j++) {
+                matriz[i][j] = rand.nextInt(10) + 1; // 1..10
+            }
+        }
+
+        System.out.println("Matriz generada:");
+        for (int i = 0; i < filas; i++) {
+            System.out.print("[");
+            for (int j = 0; j < columnas; j++) {
+                System.out.print(matriz[i][j] + (j < columnas - 1 ? " \t" : ""));
+            }
+            System.out.println("]");
+        }
     }
 
     /*
@@ -338,6 +402,24 @@ public static void ejercicio7() {
     public static void ejercicio12() {
         System.out.println("Ejercicio 12");
 
+        int filas = 3;
+        int columnas = 4;
+        int[][] matriz = new int[filas][columnas];
+
+        for (int i = 0; i < filas; i++) {
+            for (int j = 0; j < columnas; j++) {
+                matriz[i][j] = rand.nextInt(11) + 2; // 2..12
+            }
+        }
+
+        System.out.println("Matriz aleatoria 3x4:");
+        for (int i = 0; i < filas; i++) {
+            System.out.print("[");
+            for (int j = 0; j < columnas; j++) {
+                System.out.print(matriz[i][j] + (j < columnas - 1 ? " \t" : ""));
+            }
+            System.out.println("]");
+        }
     }
 
     /*
@@ -351,6 +433,35 @@ public static void ejercicio7() {
     public static void ejercicio13() {
         System.out.println("Ejercicio 13");
 
+        int[][] matriz = new int[3][3];
+        boolean[][] ocupadas = new boolean[3][3];
+
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                matriz[i][j] = 0;
+            }
+        }
+
+        for (int k = 0; k < 3; k++) {
+            int fila;
+            int columna;
+            do {
+                fila = rand.nextInt(3);
+                columna = rand.nextInt(3);
+            } while (ocupadas[fila][columna]);
+
+            ocupadas[fila][columna] = true;
+            matriz[fila][columna] = 1;
+        }
+
+        System.out.println("Matriz 3x3 con 3 unos aleatorios:");
+        for (int i = 0; i < 3; i++) {
+            System.out.print("[");
+            for (int j = 0; j < 3; j++) {
+                System.out.print(matriz[i][j] + (j < 2 ? " \t" : ""));
+            }
+            System.out.println("]");
+        }
     }
 
     /*
@@ -370,6 +481,31 @@ public static void ejercicio7() {
     public static void ejercicio14() {
         System.out.println("Ejercicio 14");
 
+        int x = rand.nextInt(8) + 3;
+        int y = rand.nextInt(8) + 3;
+        int[][] matriz = new int[x][y];
+
+        System.out.println("Matriz de " + x + "x" + y + " con ceros:");
+        for (int i = 0; i < x; i++) {
+            for (int j = 0; j < y; j++) {
+                System.out.print(matriz[i][j] + " ");
+            }
+            System.out.println();
+        }
+
+        for (int i = 1; i < x - 1; i++) {
+            for (int j = 1; j < y - 1; j++) {
+                matriz[i][j] = 1;
+            }
+        }
+
+        System.out.println("Matriz con unos en el interior:");
+        for (int i = 0; i < x; i++) {
+            for (int j = 0; j < y; j++) {
+                System.out.print(matriz[i][j] + " ");
+            }
+            System.out.println();
+        }
     }
 
     /*
@@ -422,7 +558,7 @@ public static void ejercicio7() {
         // ejercicio4();
         // ejercicio5();
         // ejercicio6();
-        ejercicio7();
+        // ejercicio7();
         // ejercicio8();
         // ejercicio9();
         // ejercicio10();
