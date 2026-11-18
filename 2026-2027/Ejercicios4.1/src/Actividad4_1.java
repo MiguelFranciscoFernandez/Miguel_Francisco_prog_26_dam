@@ -464,7 +464,7 @@ public class Actividad4_1 {
         }
     }
 
-    /*
+ /*
      * 14) Realiza un programa que pida al usuario el tamaño en las
      * dos dimensiones (X e Y) de un array bidimensional, construya
      * un array bidimensional (con esas dimensiones) con todas las
@@ -480,31 +480,26 @@ public class Actividad4_1 {
 
     public static void ejercicio14() {
         System.out.println("Ejercicio 14");
+        System.out.print("Introduce el tamaño X del array (columnas): ");
+        int x = sc.nextInt();
+        System.out.print("Introduce el tamaño Y del array (filas): ");
+        int y = sc.nextInt();
 
-        int x = rand.nextInt(8) + 3;
-        int y = rand.nextInt(8) + 3;
-        int[][] matriz = new int[x][y];
+        int[][] matriz = new int[y][x];
 
-        System.out.println("Matriz de " + x + "x" + y + " con ceros:");
-        for (int i = 0; i < x; i++) {
-            for (int j = 0; j < y; j++) {
-                System.out.print(matriz[i][j] + " ");
-            }
-            System.out.println();
-        }
-
-        for (int i = 1; i < x - 1; i++) {
-            for (int j = 1; j < y - 1; j++) {
+        for (int i = 1; i < y - 1; i++) {
+            for (int j = 1; j < x - 1; j++) {
                 matriz[i][j] = 1;
             }
         }
 
-        System.out.println("Matriz con unos en el interior:");
-        for (int i = 0; i < x; i++) {
-            for (int j = 0; j < y; j++) {
+        System.out.println("Matriz generada:");
+        for (int i = 0; i < y; i++) {
+            System.out.print("| ");
+            for (int j = 0; j < x; j++) {
                 System.out.print(matriz[i][j] + " ");
             }
-            System.out.println();
+            System.out.println("|");
         }
     }
 
@@ -520,7 +515,57 @@ public class Actividad4_1 {
 
     public static void ejercicio15() {
         System.out.println("Ejercicio 15");
+        String respuesta;
+        do {
+            int[][] matriz = new int[5][5];
+            Random rand = new Random();
+            int contador = 0;
 
+            while (contador < 3) {
+                int fila = rand.nextInt(5);
+                int columna = rand.nextInt(5);
+
+                if (matriz[fila][columna] == 0 && esValido(matriz, fila, columna)) {
+                    matriz[fila][columna] = 1;
+                    contador++;
+                }
+            }
+
+            // Mostramos la matriz
+            System.out.println("Matriz generada:");
+            for (int i = 0; i < 5; i++) {
+                for (int j = 0; j < 5; j++) {
+                    System.out.print(matriz[i][j] + " ");
+                }
+                System.out.println("");
+            }
+
+            System.out.print("¿Quieres generar otra matriz? (s/n): ");
+            respuesta = sc.nextLine();
+        } while (respuesta.equalsIgnoreCase("s"));
+
+        System.out.println(); // Salto de línea final
+    }
+
+    public static boolean esValido(int[][] matriz, int fila, int columna) {
+
+        // Arriba
+        if (fila > 0 && matriz[fila - 1][columna] == 1)
+            return false;
+
+        // Abajo
+        if (fila < 4 && matriz[fila + 1][columna] == 1)
+            return false;
+
+        // Izquierda
+        if (columna > 0 && matriz[fila][columna - 1] == 1)
+            return false;
+
+        // Derecha
+        if (columna < 4 && matriz[fila][columna + 1] == 1)
+            return false;
+
+        return true;
     }
 
     /*
@@ -532,7 +577,36 @@ public class Actividad4_1 {
      */
     public static void ejercicio16() {
         System.out.println("Ejercicio 16");
+        int[][] matriz = new int[5][5];
 
+        while (true) {
+            System.out.print("Introduce un número (n para salir): ");
+            String entrada = sc.nextLine();
+            if (entrada.equalsIgnoreCase("n"))
+                break;
+
+            int numero;
+            try {
+                numero = Integer.parseInt(entrada);
+            } catch (NumberFormatException e) {
+                System.out.println("Entrada no válida");
+                continue;
+            }
+
+            int fila, columna;
+            do {
+                fila = rand.nextInt(5);
+                columna = rand.nextInt(5);
+            } while (matriz[fila][columna] != 0);
+
+            matriz[fila][columna] = numero;
+
+            for (int i = 0; i < 5; i++) {
+                for (int j = 0; j < 5; j++)
+                    System.out.print(matriz[i][j] + " ");
+                System.out.println();
+            }
+        }
     }
 
     /*
@@ -547,9 +621,45 @@ public class Actividad4_1 {
      */
 
     public static void ejercicio17() {
-        System.out.println("Ejercicio 17");
+    System.out.println("Ejercicio 17");
+    int fila = rand.nextInt(5);
+    int columna = rand.nextInt(5);
 
-    }
+    String seguir;
+    do {
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < 5; j++) {
+                if (i == fila && j == columna)
+                    System.out.print("۩ ");
+                else
+                    // Usamos caracteres estándar como '□' y '■' o bloques seguros
+                    System.out.print((i + j) % 2 == 0 ? "□ " : "■ "); 
+            }
+            System.out.println();
+        }
+
+        System.out.print("Nueva fila (0-4): ");
+        int nuevaFila = sc.nextInt();
+        System.out.print("Nueva columna (0-4): ");
+        int nuevaColumna = sc.nextInt();
+        sc.nextLine();
+
+        boolean valida = nuevaFila >= 0 && nuevaFila < 5 && nuevaColumna >= 0 && nuevaColumna < 5
+                && (nuevaFila == fila || nuevaColumna == columna
+                        || Math.abs(nuevaFila - fila) == Math.abs(nuevaColumna - columna));
+
+        if (valida) {
+            fila = nuevaFila;
+            columna = nuevaColumna;
+            System.out.println("Movimiento válido");
+        } else {
+            System.out.println("No se puede mover");
+        }
+
+        System.out.print("¿Seguir jugando? (s/n): ");
+        seguir = sc.nextLine();
+    } while (seguir.equalsIgnoreCase("s"));
+}
 
     public static void main(String[] args) {
         // ejercicio1();
@@ -568,7 +678,7 @@ public class Actividad4_1 {
         // ejercicio14();
         // ejercicio15();
         // ejercicio16();
-        // ejercicio17();
+        ejercicio17();
 
         sc.close();
 
