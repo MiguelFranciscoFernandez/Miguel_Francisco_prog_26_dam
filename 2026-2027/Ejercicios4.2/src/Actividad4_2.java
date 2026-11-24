@@ -28,7 +28,6 @@ public class Actividad4_2 {
             vector3[i] = vector1[i] + vector2[i];
         }
 
-
         System.out.print("vector1: ");
         for (int i = 0; i < vector1.length; i++) {
             System.out.print(vector1[i] + " ");
@@ -49,10 +48,53 @@ public class Actividad4_2 {
     }
 
     /*
-     * 2)
+     * 2)Queremos guardar los nombres y las edades de los alumnos de un curso.
+     * Realiza un programa que introduzca el nombre y la edad de cada alumno.
+     * El proceso de lectura de datos terminará cuando se introduzca como nombre un
+     * asterisco (`*`). Al finalizar se mostrará:
+     * 
+     * Todos los alumnos que son **mayores de edad**.
+     * El/los alumno/s de **mayor edad** .
      */
     public static void ejercicio2() {
         System.out.println("Ejercicio 2");
+        int mayor = 0;
+        int[] edad = new int[100];
+        String[] nombre = new String[100];
+        boolean salir = false;
+        int contador = 0;
+
+        while (!salir) {
+            System.out.print("Introduce nombre(* para terminar): ");
+            nombre[contador] = sc.nextLine();
+
+            if (nombre[contador].equals("*")) {
+                salir = true;
+            } else {
+                edad[contador] = rand.nextInt(20) + 1;
+                contador++;
+            }
+        }
+
+        for (int i = 0; i < contador; i++) {
+            if (edad[i] >= 18) {
+                System.out.println(nombre[i] + " es mayor de edad");
+            }
+        }
+
+        String alumnosMayores = "";
+
+        for (int i = 0; i < contador; i++) {
+            int mayorAnterior = mayor;
+            mayor = Math.max(mayor, edad[i]);
+            if (mayor > mayorAnterior) {
+                alumnosMayores = nombre[i] + "";
+            } else if (edad[i] == mayor) {
+                alumnosMayores += nombre[i] + "";
+            }
+        }
+
+        System.out.println("El/los alumno/s de mayor edad es/son: " + alumnosMayores);
 
     }
 
@@ -159,8 +201,8 @@ public class Actividad4_2 {
     }
 
     public static void main(String[] args) {
-        ejercicio1();
-        // ejercicio2();
+        // ejercicio1();
+        ejercicio2();
         // ejercicio3();
         // ejercicio4();
         // ejercicio5();
