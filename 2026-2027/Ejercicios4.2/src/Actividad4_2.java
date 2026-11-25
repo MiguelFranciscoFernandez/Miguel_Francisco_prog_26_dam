@@ -233,7 +233,7 @@ public class Actividad4_2 {
      * 7)Queremos guardar la temperatura mínima y máxima de 5 días. Realiza un
      * programa que
      * ofrezca la siguiente información:
-     * 
+     * Random
      * La temperatura media de cada día ⚖.
      * Los días con la temperatura más baja .
      * Se lee una temperatura por teclado y se muestran los días cuya temperatura
@@ -266,10 +266,8 @@ public class Actividad4_2 {
         int[][] temperaturas = new int[7][2];
 
         for (int i = 0; i < temperaturas.length; i++) {
-            System.out.println("Introduzca la temperatura mínima del día " + diaSemana[i]);
-            int tempMinima = sc.nextInt();
-            System.out.println("Introduzca la temperatura máxima del día " + diaSemana[i]);
-            int tempMaxima = sc.nextInt();
+            int tempMinima = (int) (Math.random() * 21) - 10;
+            int tempMaxima = tempMinima + (int) (Math.random() * 31);
             temperaturas[i][0] = tempMinima;
             temperaturas[i][1] = tempMaxima;
         }
@@ -303,50 +301,228 @@ public class Actividad4_2 {
     }
 
     /*
-     * 8)
+     * 8)Diseña el algoritmo para un programa que:
+     * Random
+     * 1. Cree una tabla bidimensional (matriz) de 5x5 llamada `matriz`.
+     * 2. Cargue la tabla con valores numéricos enteros.
+     * 3. **Sume todos los elementos de cada fila y todos los elementos de cada
+     * columna**, visualizando los resultados en pantalla.
      */
+
+    public static int sumaFila(int[][] matriz, int fila) {
+        int suma = 0;
+        for (int j = 0; j < matriz[fila].length; j++) {
+            suma += matriz[fila][j];
+        }
+        return suma;
+    }
+
+    public static int sumaColumna(int[][] matriz, int columna) {
+        int suma = 0;
+        for (int i = 0; i < matriz.length; i++) {
+            suma += matriz[i][columna];
+        }
+        return suma;
+    }
 
     public static void ejercicio8() {
         System.out.println("Ejercicio 8");
+        int[][] matriz = new int[5][5];
 
+        // Cargar la matriz con valores aleatorios entre 0 y 9
+        for (int i = 0; i < matriz.length; i++) {
+            for (int j = 0; j < matriz[i].length; j++) {
+                matriz[i][j] = rand.nextInt(10);
+            }
+        }
+        // Mostrar la matriz
+        System.out.println("Matriz:");
+        for (int i = 0; i < matriz.length; i++) {
+            for (int j = 0; j < matriz[i].length; j++) {
+                System.out.print(matriz[i][j] + " ");
+            }
+            System.out.println();
+        }
+        // Mostrar las sumas de las filas
+        System.out.println("Sumas de las filas:");
+        for (int i = 0; i < matriz.length; i++) {
+            System.out.println("Fila " + i + ": " + sumaFila(matriz, i));
+        }
+        // Mostrar las sumas de las columnas
+        System.out.println("Sumas de las columnas:");
+        for (int j = 0; j < matriz[0].length; j++) {
+            System.out.println("Columna " + j + ": " + sumaColumna(matriz, j));
+        }
     }
 
     /*
-     * 9)
+     * 9) Diseña el algoritmo para un programa que:
+     * Random
+     * 1. Cree una tabla bidimensional de 5x5 llamada `diagonal`.
+     * 2. Cargue la tabla de forma que los componentes de la **diagonal principal**
+     * tomen
+     * el valor `1` y el resto el valor `0`.
+     * 3. Muestre el contenido de la tabla en pantalla.
      */
 
     public static void ejercicio9() {
         System.out.println("Ejercicio 9");
+        int[][] diagonal = new int[5][5];
+
+        for (int i = 0; i < diagonal.length; i++) {
+            for (int j = 0; j < diagonal[i].length; j++) {
+                if (i == j) {
+                    diagonal[i][j] = 1;
+                } else {
+                    diagonal[i][j] = 0;
+                }
+            }
+        }
+        // Mostrar el contenido de la tabla
+        System.out.println("Matriz diagonal:");
+        for (int i = 0; i < diagonal.length; i++) {
+            for (int j = 0; j < diagonal[i].length; j++) {
+                System.out.print(diagonal[i][j] + " ");
+            }
+            System.out.println();
+        }
     }
 
     /*
-     * 10)
+     * 10)Diseña el algoritmo para un programa que:
+     * 
+     * 1. Cree una tabla bidimensional de 5x15 llamada `marco`.
+     * 2. Cargue la tabla con ceros y unos para que se dibuje un **marco**. El valor
+     * `1`
+     * debe ocupar las posiciones más externas, y el resto de los elementos (`0`)
+     * deben
+     * quedar en el interior.
+     * 3. Visualice el contenido de la matriz en pantalla, que debería tener este
+     * aspecto:
+     * 
+     * ```
+     * 111111111111111
+     * 100000000000001
+     * 100000000000001
+     * 100000000000001
+     * 111111111111111
+     * ```
      */
 
     public static void ejercicio10() {
         System.out.println("Ejercicio 10");
+        int[][] marco = new int[5][15];
 
+        for (int i = 0; i < marco.length; i++) {
+            for (int j = 0; j < marco[i].length; j++) {
+                if (i == 0 || i == marco.length - 1 || j == 0 || j == marco[i].length - 1) {
+                    marco[i][j] = 1;
+                } else {
+                    marco[i][j] = 0;
+                }
+            }
+        }
+
+        // Mostrar el contenido de la tabla
+        System.out.println("Matriz marco:");
+        for (int i = 0; i < marco.length; i++) {
+            for (int j = 0; j < marco[i].length; j++) {
+                System.out.print(marco[i][j] + " ");
+            }
+            System.out.println();
+        }
     }
 
     /*
-     * 11)
+     * 11)Crea un programa que genere un arreglo (vector) de tamaño N con **números
+     * aleatorios que no se repitan entre sí**. El rango de los números y el tamaño
+     * N los puedes definir tú.
+     * Random
+     * Pista: Cuando generes un número, tendrás que comprobar si ya existe en el
+     * array
+     * antes de añadirlo.*
      */
     public static void ejercicio11() {
         System.out.println("Ejercicio 11");
+        int n = 10;
+        int[] numeros = new int[n];
+        int contador = 0;
 
+        while (contador < n) {
+            int numero = rand.nextInt(100);
+            boolean repetido = false;
+
+            for (int i = 0; i < contador; i++) {
+                if (numeros[i] == numero) {
+                    repetido = true;
+                    break;
+                }
+            }
+
+            if (!repetido) {
+                numeros[contador] = numero;
+                contador++;
+            }
+        }
+
+        System.out.print("Numeros sin repetir: ");
+        for (int i = 0; i < numeros.length; i++) {
+            System.out.print(numeros[i] + " ");
+        }
+        System.out.println();
     }
 
     /*
      * 12)
+     * De una empresa de transporte se quiere guardar el nombre de los conductores
+     * que tiene, y los kilómetros que conducen cada día de la semana. Random
      */
+
+    public static int sumaKilometros(int[][] kilometros, int conductor) {
+        int suma = 0;
+        for (int j = 0; j < kilometros[conductor].length; j++) {
+            suma += kilometros[conductor][j];
+        }
+        return suma;
+    }
 
     public static void ejercicio12() {
         System.out.println("Ejercicio 12");
+        String[] conductores = { "Juan", "María", "Pedro", "Ana", "Luis" };
+        int[][] kilometros = new int[conductores.length][7];
+        int[] sumaKilometros = new int[conductores.length];
 
+        // Generar kilómetros aleatorios para cada conductor y día
+        for (int i = 0; i < kilometros.length; i++) {
+            for (int j = 0; j < kilometros[i].length; j++) {
+                kilometros[i][j] = rand.nextInt(100);
+            }
+        }
+
+        // Mostrar los datos
+        System.out.println("Kilómetros conducidos por cada conductor:");
+        for (int i = 0; i < conductores.length; i++) {
+            System.out.print(conductores[i] + ": ");
+            for (int j = 0; j < kilometros[i].length; j++) {
+                System.out.print(kilometros[i][j] + " ");
+            }
+            sumaKilometros[i] = sumaKilometros(kilometros, i);
+            System.out.println(" | Total: " + sumaKilometros[i]);
+            System.out.println();
+        }
     }
 
     /*
      * 13)
+     * Crea un programa que lea los precios de 5 artículos y las cantidades vendidas
+     * por una empresa en sus 4 sucursales. El programa debe informar:
+     * Las cantidades **totales de cada artículo** vendido (sumando todas las
+     * sucursales).
+     * La cantidad total de artículos vendidos en la **sucursal 2**.
+     * La cantidad del **artículo 3** que se vendió en la **sucursal 1**.
+     * La **recaudación total** de cada sucursal .
+     * La **recaudación total** de la empresa (sumando todas las sucursales).
+     * La sucursal de **mayor recaudación** 🏢.
      */
 
     public static void ejercicio13() {
@@ -356,11 +532,45 @@ public class Actividad4_2 {
 
     /*
      * 14)
+     * Crear un programa de ordenador para gestionar los resultados de la **quiniela
+     * de fútbol**. Para ello vamos a utilizar dos tablas (matrices) de 15 filas
+     * (una
+     * por partido):
+     * `equipos`: Una tabla de cadenas de texto de 15x2 donde se guarda el nombre
+     * del equipo local y el visitante de cada partido.
+     * `resultados`: Una tabla de enteros de 15x2 donde se guardan los goles de cada
+     * equipo. La primera columna corresponde al equipo local y la segunda al
+     * visitante.
+     * El programa irá pidiendo por teclado los nombres de los equipos de cada uno
+     * de los
+     * 15 partidos y el resultado (goles del equipo 1 y goles del equipo 2). A
+     * continuación, se imprimirá la quiniela completa de esa jornada de forma clara
+     * y
+     * ordenada. 🥅
      */
 
     public static void ejercicio14() {
         System.out.println("Ejercicio 14");
+        String[][] equipos = new String[15][2];
+        int[][] resultados = new int[15][2];
 
+        for (int i = 0; i < 15; i++) {
+            System.out.print("Partido " + (i + 1) + " - Local: ");
+            equipos[i][0] = sc.nextLine();
+
+            System.out.print("Partido " + (i + 1) + " - Visitante: ");
+            equipos[i][1] = sc.nextLine();
+
+            resultados[i][0] = (int) (Math.random() * 6);
+            resultados[i][1] = (int) (Math.random() * 6);
+        }
+
+        // 2. Mostrar la quiniela completa
+        System.out.println("Resultados de la quiniela:");
+        for (int i = 0; i < 15; i++) {
+            System.out.println((i + 1) + ". " + equipos[i][0] + " " + resultados[i][0] + " - " + resultados[i][1] + " "
+                    + equipos[i][1]);
+        }
     }
 
     public static void main(String[] args) {
